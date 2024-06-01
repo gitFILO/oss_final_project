@@ -26,11 +26,24 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 
 export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmLink = `${domain}/auth/new-verification?token=${token}`;
-
-  await resend.emails.send({
-    from: "mail@cpocs.io",
+  
+  const sender = {
     to: email,
-    subject: "Confirm your email",
-    html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`,
-  });
-};
+    from: process.env.USER_EMAIL,
+    html: `<p>Digest 이메일 인증</p>
+    <p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`,
+    subject: "Digest 이메일 인증",
+  };
+
+  console.log("신청:",sender)
+
+  const response = await fetch(`${domain}/api/register`, {
+      method: "POST",
+      body: JSON.stringify(sender),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+}
