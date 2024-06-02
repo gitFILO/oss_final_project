@@ -64,7 +64,7 @@ export default function ChatContent({
       // create a new chat in the database
       const chat = await createChat({
         videoDetails: undefined,
-        videoURL: "",
+        video_id: "",
       });
       currentChatId = chat.id;
       // and get the id and store it in state

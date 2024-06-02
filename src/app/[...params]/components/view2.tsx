@@ -72,18 +72,14 @@ export default function VideoView2({
     return;
   };
 
-  if(!chats){
-    return <></>
-  }
-  console.log("chats:", chats)
   if (!showVideo) {
     return <>Loading..</>;
   } else {
     return (
-      <ScrollArea className="h-full w-full ">
+      <ScrollArea className="h-full w-full">
         <div className="videoPlayer2 m-3">
           <div className="oriVideo2 gap-5">
-            {chats ? (
+            {chats.length ? (
               chats.map((item: any, index: number) => (
                 <div className="ori_video gap-2" key={index}>
                   <ReactPlayer

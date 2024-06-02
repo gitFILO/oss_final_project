@@ -9,10 +9,10 @@ import { VideoDetails } from "youtube-caption-extractor";
 
 export async function createChat({
   videoDetails,
-  videoURL,
+  video_id,
 }: {
   videoDetails?: VideoDetails | undefined;
-  videoURL?: string | undefined;
+  video_id?: string | undefined;
 }) {
   const user = await currentUser();
 
@@ -27,7 +27,7 @@ export async function createChat({
     .values({
       name: videoDetails?.title ?? "",
       workspaceId: currentUserPersonalSpace ?? "",
-      videoId: videoURL ?? "",
+      videoId: video_id ?? "",
     })
     .returning();
 
