@@ -6,6 +6,7 @@ import {
   getCurrentUserTeamSpace,
 } from "../lib/auth";
 import { cookies } from "next/headers";
+import { Toaster } from "sonner";
 
 export default async function Header() {
   const currentUserTeamSpace = (await getCurrentUserTeamSpace()) || null;
@@ -37,6 +38,7 @@ export default async function Header() {
           chatToggle={chatToggle}
           userId={session?.id}
         />
+        <Toaster />
         <UserButton />
       </div>
     </header>

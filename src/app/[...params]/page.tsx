@@ -84,7 +84,7 @@ export default async function Page({
           <div
             className={cn(
               "h-full",
-              currentSpace.type === "team" && "bg-stone-200 bg-opacity-60"
+              currentSpace.type === "team" && ""
             )}
           >
             <ChatContentWrapper chatId={chatId} />
@@ -94,7 +94,7 @@ export default async function Page({
         <div
           className={cn(
             "w-full h-full flex flex-col justify-center align-middle items-center",
-            currentSpace.type === "team" && "bg-stone-200 bg-opacity-60"
+            currentSpace.type === "team" && ""
           )}
         >
         <Suspense fallback={<div>Loading...</div>}>

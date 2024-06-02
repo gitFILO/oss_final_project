@@ -282,6 +282,7 @@ export function MainNav({
       });
 
       if (!response.ok) {
+        console.log(response.body)
         toast({
           variant: "destructive",
           title: "초대에 실패하였습니다.",
