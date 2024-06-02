@@ -1,7 +1,5 @@
 "use client";
 
-import { time } from "console";
-import { Tienne } from "next/font/google";
 import { useEffect } from "react";
 import React from "react";
 import { useState, useRef } from "react";

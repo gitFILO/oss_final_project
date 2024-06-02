@@ -1,14 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { Button } from "@/components/ui/button";
 import { FaYoutube } from "react-icons/fa";
-import { SelectChat, chats as chatsTable } from "@/db/schema";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
-
 
 export default function VideoView2({
   workspaceId,
@@ -17,37 +14,33 @@ export default function VideoView2({
   workspaceId: string;
   spaceId: string;
 }) {
-  
+  const [chats, setChats] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const getChats = async () => {
-    
-    const res = await fetch(`/api/chats/${spaceId}`)
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const res = await fetch(`/api/chats/${spaceId}`);
+        if (!res.ok) throw new Error('Failed to fetch chats');
+        const data = await res.json();
+        setChats(data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    console.log("res:" , res)
-    if (!res.ok) throw new Error('Failed to fetch chats');
-    return res.json();
-  };
-  
-  const { data: chats, isLoading, error } = useQuery({
-    queryKey: ['posts'],
-    queryFn: getChats, 
-    refetchInterval: 2000 // 2초마다 폴링
-});
+    fetchChats();
+  }, [spaceId]);
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error has occurred: {error.message}</div>;
+  if (error) return <div>An error has occurred: {error}</div>;
 
-  console.log("chats:", chats)
-  console.log("chats.length:",chats)
-  const showVideo = true
+  const showVideo = true;
 
-  function deleteCookie(name: string) {
-    // 만료일을 과거로 설정하여 쿠키 삭제
-    document.cookie =
-      name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  }
   const layoutResize = () => {
-    // console.log('cookie=', cookies().get(`react-resizable-panels:layout`));
     const layoutCookie = document.cookie.match(
       "(^|;) ?" + "react-resizable-panels:layout" + "=([^;]*)(;|$)"
     );

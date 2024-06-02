@@ -17,7 +17,6 @@ import { cookies } from "next/headers";
 import { ClientComponent } from "./resizable_page";
 import AccessDenied from "./components/access-denied";
 import { cn } from "@/lib/utils";
-import { ReactQueryProvider } from "@/app/hooks/useReactQuery";
 
 export interface TeamSpace {
   id: string | null;
@@ -36,10 +35,9 @@ export default async function Page({
   const spaceId = params.params[0];
   const chatId = params.params[1] ?? null;
   const currentSpace = await getSpace(spaceId);
-
   const user = await currentUser();
   if (user === null) {
-    window.location.href = `/${spaceId}`;
+    
     return;
   }
 
@@ -73,14 +71,11 @@ export default async function Page({
     <ClientComponent chatId={chatId} chatToggle={chatToggle}>
       {/* first children */}
       <Suspense fallback={<div>Loading...</div>}>
-        <ReactQueryProvider>
           <ChatList
             spaceId={spaceId}
             chatId={chatId}
             search={search}
           />
-        </ReactQueryProvider>
-        
       </Suspense>
 
       {/* second children */}
@@ -103,12 +98,10 @@ export default async function Page({
           )}
         >
         <Suspense fallback={<div>Loading...</div>}>
-          <ReactQueryProvider>
             <VideoView2
               workspaceId={""}
               spaceId={spaceId}
             />
-          </ReactQueryProvider>
         </Suspense>
         </div>
       )}

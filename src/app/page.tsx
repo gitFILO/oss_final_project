@@ -18,7 +18,7 @@ export default function Home() {
           <div className="text-center space-y-4">
             <h1 className="text-3xl font-bold">Welcome to Digest</h1>
             <p>Digest에 오신 것을 환영합니다!</p>
-            <p>요약하고 싶은 영상을 youtube에서 찾아 URL을 입력해주세요!</p>
+            <p>요약하고 싶은 영상(20분 이내)을 youtube에서 찾아 URL을 입력해주세요!</p>
         
           <button
           className="flex-row items-center gap-2 p-0"

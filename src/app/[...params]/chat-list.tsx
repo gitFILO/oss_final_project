@@ -1,13 +1,11 @@
 'use client'
 
-import { SelectChat, chats as chatsTable } from "@/db/schema";
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { FaImage } from "react-icons/fa";
-import { useQuery } from "@tanstack/react-query";
 import { Key } from "react";
 
-
-export default async function ChatList({
+export default function ChatList({
   spaceId,
   chatId,
   search,
@@ -16,25 +14,35 @@ export default async function ChatList({
   chatId: string | null;
   search?: string;
 }) {
+  const [chats, setChats] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const getChats = async () => {
-    
-    const res = await fetch(`/api/chats/${spaceId}`)
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const res = await fetch(`/api/chats/${spaceId}`);
+        if (!res.ok) throw new Error('Failed to fetch chats');
+        const data = await res.json();
+        setChats(data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    console.log("res:" , res)
-    if (!res.ok) throw new Error('Failed to fetch chats');
-    return res.json();
-  };
-  
-  const { data: chats, isLoading, error } = useQuery({
-    queryKey: ['posts'],
-    queryFn: getChats, 
-    refetchInterval: 2000 // 2초마다 폴링
-});
-  console.log(chats)
-  if(!chats){
-    return <></>
+    fetchChats();
+  }, [spaceId]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="h-full w-full overflow-x-hidden overflow-y-auto text-2xl">
       {" "}
@@ -43,7 +51,7 @@ export default async function ChatList({
           <div className="flex flex-col mx-1">
             <Link
               key=""
-              className="inline-flex items-center whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground  rounded-md px-3 justify-start leading-10"
+              className="inline-flex items-center whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-md px-3 justify-start leading-10"
               href={`/${spaceId}`}
               style={{
                 backgroundColor: chatId === null ? "black" : "",

@@ -28,7 +28,8 @@ export default async function Header() {
   return (
     <header className="z-30 sticky flex justify-center border-b">
       <div className="flex items-center justify-between w-full h-16 px-4 mx-auto sm:px-6">
-        <img src="/favicon.ico" alt="" className="size-[42px]" />
+        {/* <img src="/favicon.ico" alt="digest" className="size-[42px]" /> */}
+        <p></p>
         <MainNav
           currentUserPersonalSpace={currentUserPersonalSpace}
           currentUserTeamSpace={currentUserTeamSpace}

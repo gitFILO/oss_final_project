@@ -12,10 +12,6 @@ import { getCurrentUserTeamSpace } from "@/lib/auth";
 import ShareSelector from "./components/shareSelector";
 import DelebeButton from "./components/delebeButton";
 import { FaRegCircleXmark } from "react-icons/fa6";
-const lang = "ko"; // Optional, default is 'ko' (English)
-let videoLink = "";
-let outputPath = "";
-let openVideoUrl = "";
 
 export default async function VideoWrapper({
   chatId,
