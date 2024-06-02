@@ -75,7 +75,7 @@ export default function VideoView2({
   if(!chats){
     return <></>
   }
-  console.log(chats)
+  console.log("chats:", chats)
   if (!showVideo) {
     return <>Loading..</>;
   } else {

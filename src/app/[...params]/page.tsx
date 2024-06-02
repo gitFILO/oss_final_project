@@ -71,7 +71,7 @@ export default async function Page({
 
   return (
     <ClientComponent chatId={chatId} chatToggle={chatToggle}>
-      {/* first children
+      {/* first children */}
       <Suspense fallback={<div>Loading...</div>}>
         <ReactQueryProvider>
           <ChatList
@@ -126,7 +126,7 @@ export default async function Page({
             spaceType={currentSpace.type}
           ></VideoWrapper>
         </div>
-      )} */}
+      )}
     </ClientComponent>
   );
 }
