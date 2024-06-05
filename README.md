@@ -2,6 +2,12 @@
 - 유튜브 URL을 넣으면 내용을 요약하여 개인 스페이스에 추가할 수 있습니다.
 - 요약된 내용을 수정하거나, 삭제할 수 있습니다.
 - 개인 스페이스에 추가된 요약본을 팀 스페이스에 추가하고, 팀 스페이스에 다른 유저를 초대하여 요약본을 공유할 수 있습니다.
+<img width="650" alt="image" src="https://github.com/gitFILO/oss_final_project/assets/109865133/50c1d6e9-33b9-4488-962a-1b87aa47a654">
+
+  - 한줄 요약, 전체 요약을 통한 빠른 내용 파악
+  - 요약과 동영상을 동시 제공
+  - 자동 생성된 타임 라인을 클릭하면 해당 부분의 동영상을 바로 재생
+  - 키워드 분석을 통한 내용 구체화
 
 # Basic Architecture
 <img width="628" alt="image" src="https://github.com/gitFILO/oss_final_project/assets/109865133/795a8f4f-4d80-4690-a4f2-eb279399782b">
