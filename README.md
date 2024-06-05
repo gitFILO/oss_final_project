@@ -1,9 +1,10 @@
 # Youtube Summarize Tool: Digest
 - 유튜브 URL을 넣으면 내용을 요약하여 개인 스페이스에 추가할 수 있습니다.
+- 요약된 내용을 수정하거나, 삭제할 수 있습니다.
 - 개인 스페이스에 추가된 요약본을 팀 스페이스에 추가하고, 팀 스페이스에 다른 유저를 초대하여 요약본을 공유할 수 있습니다.
 
 # Basic Architecture
-<img width="606" alt="image" src="https://github.com/gitFILO/oss_final_project/assets/109865133/1fe83c44-ce10-4f97-9a42-66248aed22a0">
+<img width="628" alt="image" src="https://github.com/gitFILO/oss_final_project/assets/109865133/795a8f4f-4d80-4690-a4f2-eb279399782b">
 
 - Shadcn UI
 - Next Auth 5/beta
@@ -80,21 +81,20 @@ npm run dev
 ### 개인 스페이스
 1. 유튜브 url 붙여넣기 후 digest 버튼 클릭
 2. 요약이 완료되면, 개인 스페이스 클릭
-
+3. 유튜브를 요약한 내용과 타임라인이 포함된 요약본 확인
 
 https://github.com/gitFILO/oss_final_project/assets/109865133/5eef6367-ecde-4a05-8703-9fafea1cf198
 
 ### 팀 스페이스
 1. 팀 스페이스 생성
-2. 개인 스페이스에 저장된 요약을 팀 스페이스에 추가
+2. 개인 스페이스에 저장된 요약본을 팀 스페이스에 추가하여 공유
 
 https://github.com/gitFILO/oss_final_project/assets/109865133/1c3b50a8-fbfd-4229-9740-20dc41c5be65
 
 ### 팀 스페이스 초대
 1. 내가 만든 팀 스페이스에 초대할 계정 입력
 2. 초대받은 계정의 이메일로 온 인증 코드를 입력하여 초대 수락
-
-
+3. 초대된 팀 스페이스에서 요약된 내용을 공유
 
 https://github.com/gitFILO/oss_final_project/assets/109865133/930fa2c0-3180-428a-9998-825d49fb42cb
 
@@ -110,3 +110,4 @@ https://github.com/gitFILO/digest
 - Youtube API 연결
 - OpenAI API 연결
 - 데이터 파이프라인 구축
+- 팀 스페이스 관련 내용 추가
