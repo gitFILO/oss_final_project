@@ -77,11 +77,26 @@ npm i
 npm run dev
 ```
 ## 사용 예시
+### 개인 스페이스
 1. 유튜브 url 붙여넣기 후 digest 버튼 클릭
 2. 요약이 완료되면, 개인 스페이스 클릭
 
 
 https://github.com/gitFILO/oss_final_project/assets/109865133/5eef6367-ecde-4a05-8703-9fafea1cf198
+
+### 팀 스페이스
+1. 팀 스페이스 생성
+2. 개인 스페이스에 저장된 요약을 팀 스페이스에 추가
+
+https://github.com/gitFILO/oss_final_project/assets/109865133/1c3b50a8-fbfd-4229-9740-20dc41c5be65
+
+### 팀 스페이스 초대
+1. 내가 만든 팀 스페이스에 초대할 계정 입력
+2. 초대받은 계정의 이메일로 온 인증 코드를 입력하여 초대 수락
+
+
+
+https://github.com/gitFILO/oss_final_project/assets/109865133/930fa2c0-3180-428a-9998-825d49fb42cb
 
 
 
